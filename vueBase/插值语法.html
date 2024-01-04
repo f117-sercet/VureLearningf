@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插值语法</title>
+</head>
+<script src="js/vue.js"></script>
+
+<!--准备容器-->
+<div id="root">
+    <h1>你好,{{name}}</h1>
+    <hr/>
+    <h1>指令语法</h1>
+    <a v-bind:href="url">点我去学习1</a>
+    <a :href="Date.now()">点我去学习2</a>
+</div>
+
+<!--
+Vue模板语法有两大类
+  1.插值语法：
+     功能：用于解析标签体内容
+     写法：{{xxx}},xxx是js表达式，且可以直接读取到data中的所有属性值，xxx同样为js表达式
+  2.指令语法：
+      功能：用于解析标签（包括：标签属性、标签体内容、绑定事件。。。。）
+      备注：Vue中有很多的指令，且形式都是：v-???
+-->
+
+<script type="text/javascript">
+    // 关掉提示
+    Vue.config.productionTip = false
+
+    // 创建Vue实例
+    new Vue({
+        el:'#root',
+        data:{
+
+            name:'Jack',
+            url:'https://www.atguigu.com',
+
+        }
+    });
+
+</script>
+</body>
+</html>
