@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件修饰符</title>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <style>
+        *{
+            margin-top: 20px;
+        }
+        .demo01{
+            height: 50px;
+            backdrop-color:skyblue;
+        }
+    </style>
+</head>
+<div id="root">
+    <h2>欢迎来到{{name}}</h2>
+    <a href="https://www.atguigu.com" @click.prevent="showInfo">点我提示信息</a>
+    <div class="demo01" @click="showInfo">
+        <button href="https://www.atguigu.com" @click.stop="showInfo">点我提示信息</button>
+    </div>
+    <!---事件只触发一次---->
+    <button href="https://www.atguigu.com" @click.once="showInfo">点我提示信息</button>
+    <button href="https://www.atguigu.com" @click.once="showInfo">点我提示信息</button>
+</div>
+<body>
+<!----
+    Vue中的事件修饰符
+        1.prevent:阻止默认事件(常用)
+        2.stop:阻止事件冒泡(常用)
+        3.once:事件只触发一次(常用)
+        4.capture:事件只触发一次（常用）
+        5.self:只用event.target是当前操作的元素时才触发
+        6.passive:事件的默认行为立即执行，无需等待事件回调执行完毕
+---->
+<script type="text/javascript">
+    Vue.config.productionTip = false
+
+    new Vue({
+        el:'#root',
+        data:{
+            name:'Vue'
+        },
+        methods:{
+            showInfo(e){
+                alert.info("带劲儿~")
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
