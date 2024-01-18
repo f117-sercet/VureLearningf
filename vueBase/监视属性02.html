@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>监视属性</title>
+    <title>深度监视</title>
 </head>
 <script src="js/vue.js"></script>
 
@@ -10,16 +10,20 @@
 <div id="root">
     <h2>今天天气很{{info}}</h2>
     <button @click="changeWeather">切换天气</button>
+    <h3> a的值是{{numbers.a}}</h3>
+    <button @click="numbers.a++">点我</button>
+    <h3> a的值是{{numbers.b}}</h3>
+    <button @click="numbers.b++">点我</button>
+
 </div>
 
 <!--
-  监视属性watch:
-    1.当监视属性变化时,回调函数自动调用，进行相关操作
-    2.监视的属性必须存在，才能进行监视！！
-    3.监视属性两种写法：
-        (1) new Vue 时传入watch配置
-        (2).通过vm.$watch监视
-
+   深度监视：
+    (1).Vue中的watch默认不监测对象内部值的改变（一层）
+    (2).配置deep:true 可以监测的对象内布值的改变(多层)
+    备注：
+        (1).Vue自身可以监测对象内部值的改变，但Vue提供的watch默认不可以
+        (2)。使用watch时根据具体结构，决定是否采用深度监测
 -->
 
 <script type="text/javascript">
@@ -30,7 +34,13 @@
    const vm =  new Vue({
         el:'#root',
         data:{
-            isHot:true
+            isHot:true,
+            numbers:{
+                a:1,
+                b:1,
+                c:'',
+                d:'',
+            }
         },
         computed:{
             info(){
@@ -48,18 +58,24 @@
                 // handler 何时调用 当isHot发生改变时,发生调用
                 handler(newValue,oldValue){
                   console.log("isHot被改了"+""+"旧的值:"+oldValue)
+                },
+                numbers: {
+                    deep:true, //监视多级结构中所有属性的变化
+                    handler(){
+                        console.log('numbers跟着变了')
+                    }
                 }
-            }
+            },
        }
     });
-    // 监视方法二
+/*    // 监视方法二
     vm.$watch('isHot',{
         // immediate:boolean.初始化时，让handler调用一下
         // handler 何时调用 当isHot发生改变时,发生调用
              handler(newValue,oldValue){
             console.log("isHot被改了"+""+"旧的值:"+oldValue)
                  }
-    });
+    })*/
 
 </script>
 </body>
