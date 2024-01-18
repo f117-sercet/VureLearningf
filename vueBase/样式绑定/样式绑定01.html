@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>样式绑定</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<style>
+    .happy{
+        border: 4px solid red;
+        background-color:rgba(255,255,0,644);
+        background:linear-gradient(30deg,yellow,orange,yellow);
+    }
+</style>
+<body>
+
+<!---
+
+---->
+<div id="root">
+
+    <h1>你好,123</h1>
+    <!--绑定class样式-字符串写法，适用于：样式的类名不确定，需要动态决定-->
+    <div @click="changeMode" class="happy" :class="a"></div>
+    <!--绑定class样式-数组写法，要绑定的样式个数不确定，名字也不确定-->
+    <div @click="changeMode" class="happy" :class="classArr"></div>
+    <!--绑定class样式-对象写法，要绑定的样式个数确定，名字也确定，要动态决定-->
+    <div @click="changeMode" class="happy" :class="classObj"></div>
+</div>
+</body>
+<script type="text/javascript">
+
+    // el的两种写法
+    Vue.config.productionTip = false
+    const v =  new Vue({
+        el:'#root',
+        data:{
+            name:'123',
+            a:'normal',
+            classArr:['happy'],
+            classObj: {
+                happy:false
+            }
+        },
+        methods:{
+            changeMode(){
+                this.a ='happy'
+            }
+        }
+    })
+
+
+</script>
+</html>
