@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表过滤</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+
+<!---
+
+---->
+<div id="root">
+  <h2>人员信息</h2>
+
+    <input type="text" placeholder="请输入姓名" v-model="keyword">
+    <ul>
+     <li v-for="(p,index) in persons":key="index">
+     <!--写法一(遍历数组)--->
+    <!-- <li v-for="person in persons":key="p.id">  -->
+         {{p.name}}{{p.age}}-{{p.sex}}
+     </li>
+ </ul>
+
+</div>
+</body>
+<script type="text/javascript">
+
+    // el的两种写法
+    Vue.config.productionTip = false
+    // yongwatch实现
+    const v =  new Vue({
+        el:'#root',
+        data:{
+            keyword:'',
+            persons:[
+                {id:'001',name:'马冬梅',age:'18',sex:'1'},
+                {id:'002',name:'周冬雨',age:'19',sex:'1'},
+                {id:'003',name:'周杰伦',age:'20',sex:'1'},
+                {id:'004',name:'温兆伦',age:'20',sex:'1'},
+            ],
+            filPersons:[]
+        },
+        methods:{
+            },
+        watch:{
+            keyword:{
+                deep:true,
+                immediate:true,
+                handler(val){
+                    console.log(val+'被改了')
+                   this.persons = this.persons.filter((p)=>{
+                        // 函数体
+                       return  p.name.indexOf(val)!==-1
+                    })
+                }
+            }
+        },
+        // computed实现
+        computed:{
+            filPersons(){
+               return  this.filPersons = this.persons.filter((p)=>{
+                    return p.name.indexOf(this.keyword)!==-1
+                })
+            }
+        }
+    })
+
+
+</script>
+</html>
