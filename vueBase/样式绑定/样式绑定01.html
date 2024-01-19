@@ -26,6 +26,10 @@
     <div @click="changeMode" class="happy" :class="classArr"></div>
     <!--绑定class样式-对象写法，要绑定的样式个数确定，名字也确定，要动态决定-->
     <div @click="changeMode" class="happy" :class="classObj"></div>
+    <!--绑定style样式-对象写法-->
+    <div @click="changeMode" :style="{fontSize:fftSize+'px'}" :class="classObj"></div>
+    <!--绑定style样式-数组写法-->
+    <div @click="changeMode" :style="styleArr" :class="classObj"></div>
 </div>
 </body>
 <script type="text/javascript">
@@ -40,7 +44,9 @@
             classArr:['happy'],
             classObj: {
                 happy:false
-            }
+            },
+            fftSize:40,
+            styleArr:['classObj']
         },
         methods:{
             changeMode(){
