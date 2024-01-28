@@ -10,8 +10,14 @@
 
 <!---
 数据监测 总结
-1.数组的索引值改变无法引起vue中的数据改变
-2.
+    1.数组的索引值改变无法引起vue中的数据改变
+Vue监视数据改变的原理
+    1.vue会监视data中所有层次的数据
+    2.如何监测对象中的数据
+        通过setter实现数据监视，且要在 new Vue时就传入要检测的数据。
+        (1).对象中后追加的属性，Vue默认不做响应式的处理。
+        (2).如需给后添加的属性做响应，请使用如下API:
+            1.
 
 ---->
 <div id="root">
@@ -25,6 +31,8 @@
          {{p.name}}{{p.age}}-{{p.sex}}
      </li>
  </ul>
+    <br/>
+<button @click="updateFriends">点我改变数组</button>
 
 </div>
 </body>
@@ -48,6 +56,10 @@
         methods:{
             updateMei(){
                 this.persons[0].name='马老师'
+            },
+            updateFriends(event){
+                var value = event.target.value;
+                console.log(value.toString())
             }
             }
     })
