@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单数据收集</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<style>
+
+</style>
+<body>
+
+<!---
+表单数据收集
+
+---->
+<div id="root">
+    <form>
+        <label for="demo">账号:</label><br>
+        <input type="text" id="demo" v-model="account">
+        密码:<input type="password" v-model="password"><br>
+        性别:
+        男 <input type="radio" v-model="sex" value="1">
+        女<input type="radio" v-model="sex" value="2">
+        爱好
+        学习<input type="checkbo x">
+        打游戏<input type="checkbox">
+        吃饭<input type="checkbox">
+        <br/>
+        所属校区
+        <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </form>
+
+</div>
+</body>
+<script type="text/javascript">
+
+    // el的两种写法
+    Vue.config.productionTip = false
+    const v =  new Vue({
+        el:'#root',
+        data:{
+            account:'',
+            password:'',
+            sex:'',
+            hobby:''
+        },
+        methods:{
+        }
+    })
+
+
+</script>
+</html>
