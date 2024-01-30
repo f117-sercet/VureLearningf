@@ -15,17 +15,20 @@
 
 ---->
 <div id="root">
-    <form>
+    <!---.prevent 组织表单提交---------->
+    <form @submint.prevent="demos">
         <label for="demo">账号:</label><br>
         <input type="text" id="demo" v-model="account">
         密码:<input type="password" v-model="password"><br>
+        <!--------type=number 控制输入数字------------->
+        年龄:<input type="number" v-model.number="password"><br>
         性别:
         男 <input type="radio" v-model="sex" value="1">
         女<input type="radio" v-model="sex" value="2">
         爱好
-        学习<input type="checkbo x">
-        打游戏<input type="checkbox">
-        吃饭<input type="checkbox">
+        学习<input type="checkbox" v-model="hobby" value="01">
+        打游戏<input type="checkbox" v-model="hobby" value="02">
+        吃饭<input type="checkbox" v-model="hobby" value="03">
         <br/>
         所属校区
         <select>
@@ -42,15 +45,21 @@
 
     // el的两种写法
     Vue.config.productionTip = false
-    const v =  new Vue({
-        el:'#root',
-        data:{
-            account:'',
-            password:'',
-            sex:'',
-            hobby:''
+    const v = new Vue({
+        el: '#root',
+        data: {
+            account: '',
+            password: '',
+            age:'',
+            sex: '',
+            hobby: []
         },
-        methods:{
+        methods: {
+
+            demos() {
+                console.log(this._data)
+
+            }
         }
     })
 
