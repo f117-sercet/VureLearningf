@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<!---
+学过的指令:
+---->
+<div id="root">
+     <h2>当前的：{{name}}</h2>
+    <h2>放大10倍：<span v-big="name"></span></h2>
+    </div>
+</body>
+<script type="text/javascript">
+
+    // el的两种写法
+    Vue.config.productionTip = false
+    const v = new Vue({
+        //第一种写法
+        el:'#root',
+        data :{
+                name: 213,
+            },
+        //指令
+        directives:{
+            //方法一
+            // 何时会被调用？
+            // 1.指令与元素成功绑定时
+            // 2.指令所在的模板重新解析时，方法调用
+            big (element,binding){
+                element.innerText =binding.value*10
+
+            }
+        }
+
+    })
+
+
+</script>
+</html>
