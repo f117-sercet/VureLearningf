@@ -14,7 +14,23 @@
 <body>
 
 <!---
-学过的指令:
+自定义指令总结
+    一、定义语法：
+    （1）局部指令
+        new vue({                                       new Vue({
+                                                        directives{指令名：回调函数}       })                                                           })
+        directives:{指令名:配置对象}   或
+        })
+     (2) 全局指令：
+            Vue.directive(指令名,配置对象)  或             Vue.directive(指令名，回调函数)
+     二、配置对象中常用的三个回调
+            (1)bind:指令与元素成功绑定时调用
+            (2)inserted:指令所在元素被插入页面时调用
+            (3)update:指令所在模板结构被冲洗解析时调用。
+
+     三、备注:
+            1、指令定义时不加v-,但使用时要加v-;
+            2.指令名如果是多个单，要使用kebab——case命名方式,不要用camelCase命名。
 ---->
 <div id="root">
      <h2>当前的：{{name}}</h2>
@@ -39,6 +55,17 @@
             // 2.指令所在的模板重新解析时，方法调用
             big (element,binding){
                 element.innerText =binding.value*10
+
+            },
+            fbind:{
+                //指令与元素成功绑定时
+                bind(element,bind){},
+                // 指令所在元素被插入到页面时
+                inserted(element,bind){
+                },
+                //指令所在的模板被重新解析时
+                update(element,bind){
+                },
 
             }
         }
