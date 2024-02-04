@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生命周期02</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+
+<!---
+   生命周期:
+---->
+<div id="root">
+
+    <h1>当前的n值是:{{n}}</h1>
+</div>
+</body>
+<script type="text/javascript">
+
+    // el的两种写法
+    Vue.config.productionTip = false
+    const v =  new Vue({
+        el: '#root',
+        data:{
+            // 此处大的this是Vue实例对象
+                n: 1
+            },
+            methods: {},
+            // 挂载（Vue完成模板的解析并把真实dom元素放入页面后(挂载完毕)调用mounted）
+            mounted: {}
+        })
+
+</script>
+</html>
