@@ -9,10 +9,12 @@
 
 <!---
    生命周期:
+    1.
 ---->
 <div id="root">
 
     <h1>当前的n值是:{{n}}</h1>
+    <button @click="add">点我新增</button>
 </div>
 </body>
 <script type="text/javascript">
@@ -25,10 +27,44 @@
             // 此处大的this是Vue实例对象
                 n: 1
             },
-            methods: {},
+            methods: {
+            add(){
+                this.n++
+            }
+            },
+          beforeCreate(){
+            console.log("beforeCreate")
+              console.log(this)
+          },
+        created(){
+            console.log("created")
+            console.log(this)
+        },
+        beforeMount(){
+            console.log("beforeCreated")
+            console.log(this)
+        },
             // 挂载（Vue完成模板的解析并把真实dom元素放入页面后(挂载完毕)调用mounted）
-            mounted: {}
+        mounted() {
+                console.log("mounted")
+                console.log(this)
+            },
+        beforeUpdate(){
+            console.log("beforeUpdate")
+        },
+        updated(){
+            console.log("updated")
+            console.log(this.n)
+        },
+        beforeDestroy(){
+            console.log("销毁前")
+        },
+        destroyed(){
+            console.log('销毁')
+        }
+
         })
+
 
 </script>
 </html>
