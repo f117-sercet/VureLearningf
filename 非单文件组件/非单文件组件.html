@@ -8,39 +8,63 @@
 <body>
 
 <!---
-  data与el有两种写法
-    1.el有两种写法
-        （1).new Vue时时候配置el属性
-        (2).先创建Vue实例，随后通过vm.$mount('#root')指定el的值
-    2.data有2种写法：
-        (1)对象式
-        (2)函数式
-        如何选择:目前哪种写法都可以，到组件时，data必须使用函数式，否则会报错
-     3.重要原则
-        由Vue管理的函数，一定不要写箭头函数，一旦写了箭头函数，this就不再是Vue实例，而是window函数
 ---->
 <div id="root">
 
-    <h2>学校名称:{{name}}}</h2>
-    <h2>学校地址:{{address}}}</h2>
+    <!---编写组件标签---->
+    <school></school>
+    <!---编写组件标签---->
+    <student></student>
+ <hr>
 </div>
 </body>
 <script type="text/javascript">
 
     // el的两种写法
     Vue.config.productionTip = false
-   const v =  new Vue({
-    data(){
-        console.log('@@@@@',this) // 此处大的this是Vue实例对象
-        return{
-        name: '213',
-        address:'',
-
+    const vm = new Vue({
+        components: {
+            // 注册组件
+            school: school,
+            student: student
+        },
+        data() {
+            //console.log('@@@@@',this) // 此处大的this是Vue实例对象
+            return {
+                msg: '你好啊',
+            }
         }
-    }
-
     })
 
+
+    // 创建school组件
+    const school = Vue.extend({
+        //el:'#root',el配置项不在这里写
+        template:
+            '<div>  <h2>学校名称:{{schoolName}}}</h2>\n' +
+            '    <h2>学校地址:{{address}}}</h2></div>',
+        data() {
+            return {
+                schoolName: '123456',
+                address: '耗子沟',
+            }
+        }
+    })
+
+    // 创建学生组件
+    const student = Vue.extend({
+        //el:'#root',el配置项不在这里写
+        template:
+            '<div>  <h2>学生名称:{{studentName}}}</h2>\n' +
+            '    <h2>年龄:{{age}}}</h2></div>',
+        data() {
+            return {
+                studentName: '张三',
+                age: '18'
+            }
+        }
+    })
+    // 注册组件
 
 </script>
 </html>
