@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>非单文见组件</title>
+    <script type="text/javascript" src="../vueBase/js/vue.js"></script>
+</head>
+<body>
+
+<!---
+Vue中使用组件的注意事项:
+    1.可以使用name配置项指定组件在开发者工具中呈现的名字
+---->
+<div id="root">
+
+    <!---编写组件标签---->
+    <school></school>
+    <!---编写组件标签---->
+    <hr>
+    <student></student>
+</div>
+</body>
+<script type="text/javascript">
+
+    // el的两种写法
+    Vue.config.productionTip = false
+    //全局注册
+    Vue.component('SC', school)
+
+    // 创建school组件
+    const school = Vue.extend({
+        //el:'#root',el配置项不在这里写
+        template: `
+          <div>
+            <h2>学校名称:{{ schoolName }}</h2>
+            <h2>学校地址:{{ address }}</h2>
+          </div>`,
+        data() {
+            return {
+                schoolName: '123456',
+                address: '耗子沟',
+            }
+        }
+    })
+
+    // 创建学生组件
+    const student = Vue.extend({
+        //el:'#root',el配置项不在这里写
+        name:'test',
+        template: `
+          <div>
+            <h2>学生名称:{{ studentName }}</h2>
+            <h2>年龄:{{ age }}</h2>
+          </div>
+        `,
+        data() {
+            return {
+                studentName: '张三',
+                age: '18'
+            }
+        }
+    })
+
+
+    const vm = new Vue({
+
+        el: '#root',
+        components: {
+            // 注册组件
+            school,
+            student
+        },
+        data() {
+            return {
+                msg: '你好啊',
+            }
+        }
+    })
+
+</script>
+</html>
