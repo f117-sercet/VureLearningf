@@ -8,11 +8,17 @@
 <body>
 
 <!---
-Vue中使用组件的注意事项:
-    1.可以使用name配置项指定组件在开发者工具中呈现的名字
-    2.一种简写方式:
-    const school = Vue.extend(options) 可简写为 const school = options
----->
+        关于VueComponent:
+                   1.school组件本质是一个名为VueComponent的构造函数，且不是程序员定义的，是Vue.extend生成的。
+                   2.我们只需写<school/>或者<school></>school>Vue解析时会帮助我们创建school组件的实例对象。
+                   3.特别注意:每次调用Vue.extend,返回的都是一个全新的VueComponent！！！
+                   4.关于this指向:
+                        1.组件配置：
+                            data函数、methods中的函数、watch中的函数、computed中的函数，他们的this指向VueComponent
+                        2.new Vue配置中
+                            data函数、methods中的函数、watch中的函数、computed中的函数，他们的this指向vm.
+                   5.VueComponent的实例对象，简称vc.Vue的实例对象，简称vm
+                  ---->
 <div id="root">
 
     <!---编写组件标签---->
@@ -48,7 +54,6 @@ Vue中使用组件的注意事项:
     // 创建学生组件
     const student = Vue.extend({
         //el:'#root',el配置项不在这里写
-        name:'test',
         template: `
           <div>
             <h2>学生名称:{{ studentName }}</h2>
