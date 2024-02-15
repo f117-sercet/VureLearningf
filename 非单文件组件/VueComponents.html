@@ -18,6 +18,9 @@
                         2.new Vue配置中
                             data函数、methods中的函数、watch中的函数、computed中的函数，他们的this指向vm.
                    5.VueComponent的实例对象，简称vc.Vue的实例对象，简称vm
+     一个重要的内置关系
+        1.VueComponent.prototype._proto_===Vue.prototype
+        2.目的：让组件实例对象可以访问到Vue原型上的属性、方法
                   ---->
 <div id="root">
 
@@ -33,7 +36,7 @@
     // el的两种写法
     Vue.config.productionTip = false
     //全局注册
-    Vue.component('SC', school)
+    //Vue.component('SC', school)
 
     // 创建school组件
     const school = Vue.extend({
@@ -50,6 +53,7 @@
             }
         }
     })
+    console.log(school.Vue)
 
     // 创建学生组件
     const student = Vue.extend({
@@ -83,6 +87,8 @@
             }
         }
     })
+    var datas = vm.$children;
+    console.log(datas)
 
 </script>
 </html>
