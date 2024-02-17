@@ -3,11 +3,7 @@
     <img alt="Vue logo" src="./assets/logo.png">
     <h1 v-text="msg" ref="title"></h1>
     <button @click="showDom">点我展示dom</button>
-    <HelloWorld
-        name="123"
-        age="18"
-        sex="女"
-        msg="Welcome to Your Vue.js App" ref="sch"/>
+    <HelloWorld msg="Welcome to Your Vue.js App" ref="sch"/>
   </div>
 </template>
 
@@ -28,12 +24,12 @@ export default {
   },
   data() {
     return {
-      msg: '你好'
+      msg:'你好'
     }
   },
-  methods: {
-    showDom() {
-      this.$refs.title // 真实dom元素
+  methods:{
+    showDom(){
+     this.$refs.title // 真实dom元素
       this.$refs.sch // 组件VC
     }
   }
