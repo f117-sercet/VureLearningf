@@ -12,9 +12,27 @@
 </template>
 
 <!-------
- scoped 样式
-  作用：让样式在局部生效,防止冲突
-  写法：<style scoped>
+ 插件
+ 功能:用于增强 Vue
+ 本质:包含 install 方法的一个对象，install的第一个参数Vue,第二个以后的参数是插件使用者传递大的数据。
+  定义插件：
+  obj(这里指得是对象)
+  obj.install = function(Vue,options){
+
+    // 1.添加全局过滤器
+    Vue.filter(...)
+
+  // 2.添加全局指令
+  Vue.directive(...)
+
+  // 3.配置全局混入
+  Vue.mixin(....)
+
+  // 4.添加实例方法
+   Vue.prototype.&myMethod = function(){...}
+   Vue.prototype.&myProperty = xxx
+  }
+  使用插件：Vue.use()
 
 ---------->
 <script>
