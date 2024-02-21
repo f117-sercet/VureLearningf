@@ -1,31 +1,24 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <h1 v-text="msg" ref="title"></h1>
-    <button @click="showDom">点我展示dom</button>
-    <HelloWorld
-        name="123"
-        age="18"
-        sex="女"
-        msg="Welcome to Your Vue.js App" ref="sch"/>
   </div>
 </template>
 
-<!-------
- scoped 样式
-  作用：让样式在局部生效,防止冲突
-  写法：<style scoped>
-
----------->
 <script>
 
 import HelloWorld from './components/HelloWorld.vue'
 import obj from './components/plus'
+import Headers from "@/components/Headers.vue";
+import Footers from "@/components/Footers.vue";
+import Item from "@/components/Item.vue";
+import List from "@/components/List.vue";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Headers,
+    Footers,
+    Item,
+    List
   },
   data() {
     return {
