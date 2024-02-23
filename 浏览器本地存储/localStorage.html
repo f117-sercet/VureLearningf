@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>localStorage</title>
+    <script type="text/javascript" src="../vueBase/js/vue.js"></script>
+</head>
+<body>
+
+<!---
+
+---->
+<div id="root">
+
+    <button onclick="saveData()">"点我保存数据"</button>
+</div>
+</body>
+<script type="text/javascript">
+
+    // 存
+    function saveData(){
+        //存
+        localStorage.setItem('msg','hello!')
+        localStorage.setItem('msg','hello2!')
+
+        // 读
+        localStorage.getItem(localStorage.getItem("msg"))
+
+        // 删除
+        localStorage.removeItem(("msg"))
+        // 清空
+        localStorage.clear("msg")
+    }
+
+</script>
+</html>
