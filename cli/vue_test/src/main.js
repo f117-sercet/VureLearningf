@@ -1,20 +1,12 @@
-/**
- * 该文件是项目的引入文件
- */
-// 引入Vue
+//引入Vue
 import Vue from 'vue'
-// 映入App组件 所有组件的父组件
+//引入App
 import App from './App.vue'
-import plugins from './components/plus'
-
-// 关闭Vue的生产提示
+//关闭Vue的生产提示
 Vue.config.productionTip = false
 
-// 使用插件
-Vue.use(plugins)
-// 创建Vue的实例对象
+//创建vm
 new Vue({
-  // 将App组件放入容器中
-  el:'#app',
-  render: h => h(App),
+	el:'#app',
+	render: h => h(App)
 })
