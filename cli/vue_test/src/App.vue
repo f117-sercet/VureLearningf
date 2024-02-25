@@ -4,8 +4,21 @@
 			<div class="todo-wrap">
 				<MyHeader :addTodo="addTodo"/>
 				<MyList :todos="todos" :checkTodo="checkTodo" :deleteTodo="deleteTodo"/>
-				<MyFooter :todos="todos" :checkAllTodo="checkAllTodo" :clearAllTodo="clearAllTodo"/>
-			</div>
+<!--				<MyFooter
+            :todos="todos"
+            :checkAllTodo="checkAllTodo"
+            :clearAllTodo="clearAllTodo"
+
+             v-on:test="demo"/> &lt;!&ndash;-绑定事件的第一种方法&#45;&#45;&#45;&#45;&ndash;&gt;-->
+
+        <MyFooter
+            :todos="todos"
+            :checkAllTodo="checkAllTodo"
+            :clearAllTodo="clearAllTodo"
+
+            ref="demo"/> <!---绑定事件的第二种方法------>
+
+      </div>
 		</div>
 	</div>
 </template>
@@ -54,9 +67,15 @@
 				this.todos = this.todos.filter((todo)=>{
 					return !todo.done
 				})
-			}
-		}
-	}
+			},
+      demo(){
+        console.log("我被调用了")
+      }
+		},
+    mounted() {
+      this.$refs.demo.$on("demo",this.demo)
+    }
+  }
 </script>
 
 <style>

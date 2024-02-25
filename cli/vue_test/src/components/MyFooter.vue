@@ -8,6 +8,7 @@
 			<span>已完成{{doneTotal}}</span> / 全部{{total}}
 		</span>
 		<button class="btn btn-danger" @click="clearAll">清除已完成任务</button>
+    <button class="btn btn-danger" @click="sendName">点我测试</button>
 	</div>
 </template>
 
@@ -49,7 +50,12 @@
 			//清空所有已完成
 			clearAll(){
 				this.clearAllTodo()
-			}
+			},
+      sendName(){
+
+        // 触发Footer身上的事件
+        this.$emit('test','demo')
+      }
 		},
 	}
 </script>
