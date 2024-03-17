@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import {h, ref} from "vue";
+import {h, reactive, ref} from "vue";
 export default {
   name: 'HelloWorld',
   props: {
@@ -21,6 +21,10 @@ export default {
         type:'前端工程师',
         salary:'50k'
   })
+    let job1 = reactive({
+      type:'前端工程师',
+      salary:'50k'
+    })
 
     // 方法
     function sayHello(){
@@ -34,7 +38,8 @@ export default {
     return{
       name,
       age,
-      job
+      job,
+      job1
     }
   }
 }
